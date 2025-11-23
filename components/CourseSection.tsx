@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cloud, Code, Database, Shield, Lock, Server } from 'lucide-react';
+import { Cloud, Code, Database, Shield, Lock, Server, TrendingUp } from 'lucide-react';
 import { Course, SectionId } from '../types';
 
 const courses: Course[] = [
@@ -10,7 +10,8 @@ const courses: Course[] = [
     icon: 'Cloud',
     duration: '12 Weeks',
     level: 'Intermediate',
-    tags: ['Cloud', 'Infrastructure']
+    tags: ['Cloud', 'Infrastructure'],
+    wage: '$115k - $160k'
   },
   {
     id: 'fullstack-dev',
@@ -19,7 +20,8 @@ const courses: Course[] = [
     icon: 'Code',
     duration: '16 Weeks',
     level: 'Beginner Friendly',
-    tags: ['Coding', 'Web']
+    tags: ['Coding', 'Web'],
+    wage: '$95k - $145k'
   },
   {
     id: 'devops-eng',
@@ -28,7 +30,8 @@ const courses: Course[] = [
     icon: 'Server',
     duration: '14 Weeks',
     level: 'Advanced',
-    tags: ['Automation', 'Ops']
+    tags: ['Automation', 'Ops'],
+    wage: '$120k - $170k'
   },
   {
     id: 'cyber-sec',
@@ -37,7 +40,8 @@ const courses: Course[] = [
     icon: 'Shield',
     duration: '12 Weeks',
     level: 'Beginner Friendly',
-    tags: ['Security', 'Analyst']
+    tags: ['Security', 'Analyst'],
+    wage: '$100k - $150k'
   },
   {
     id: 'data-eng',
@@ -46,7 +50,8 @@ const courses: Course[] = [
     icon: 'Database',
     duration: '14 Weeks',
     level: 'Intermediate',
-    tags: ['Data', 'Python']
+    tags: ['Data', 'Python'],
+    wage: '$110k - $165k'
   },
   {
     id: 'network-eng',
@@ -55,7 +60,8 @@ const courses: Course[] = [
     icon: 'Lock',
     duration: '10 Weeks',
     level: 'Beginner Friendly',
-    tags: ['Networking', 'Cisco']
+    tags: ['Networking', 'Cisco'],
+    wage: '$85k - $130k'
   }
 ];
 
@@ -65,34 +71,49 @@ const IconMap: Record<string, React.FC<any>> = {
 
 const CourseSection: React.FC = () => {
   return (
-    <section id={SectionId.COURSES} className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Featured Programs</h2>
-          <p className="mt-4 text-xl text-slate-600">Industry-designed curricula to get you hired.</p>
+    <section id={SectionId.COURSES} className="py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">Featured Programs</h2>
+          <p className="mt-6 text-xl text-slate-500 font-light max-w-2xl mx-auto">
+            Industry-designed curricula with transparent earning potential.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course) => {
             const Icon = IconMap[course.icon] || Code;
             return (
-              <div key={course.id} className="bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 bg-brand-50 rounded-lg text-brand-600">
-                    <Icon className="w-6 h-6" />
+              <div key={course.id} className="group relative bg-white/40 backdrop-blur-xl border border-white/50 rounded-3xl p-8 hover:bg-white/60 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden">
+                {/* Glass sheen effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="p-3 bg-white/80 rounded-2xl shadow-sm text-slate-900 ring-1 ring-slate-100">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-900/5 text-slate-600 backdrop-blur-sm">
+                      {course.level}
+                    </span>
                   </div>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
-                    {course.level}
-                  </span>
-                </div>
-                
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{course.title}</h3>
-                <p className="text-slate-600 text-sm mb-4 flex-grow">{course.description}</p>
-                
-                <div className="mt-4 pt-4 border-t border-slate-100">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-slate-500 font-medium">Duration: {course.duration}</span>
-                    <button className="text-brand-600 font-semibold hover:text-brand-700">View Details &rarr;</button>
+                  
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight">{course.title}</h3>
+                  <p className="text-slate-600 text-sm mb-6 flex-grow leading-relaxed font-normal">{course.description}</p>
+                  
+                  <div className="mt-auto pt-6 border-t border-slate-200/60 space-y-4">
+                    <div className="flex items-center text-emerald-600 bg-emerald-50/50 px-4 py-2 rounded-xl backdrop-blur-sm border border-emerald-100/50">
+                        <TrendingUp className="w-4 h-4 mr-2" />
+                        <span className="text-sm font-semibold">Avg. Wage: {course.wage}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-slate-400 font-medium">{course.duration}</span>
+                      <button className="text-slate-900 font-semibold flex items-center group-hover:translate-x-1 transition-transform">
+                        View Details 
+                        <span className="ml-1">&rarr;</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

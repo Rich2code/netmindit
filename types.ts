@@ -6,6 +6,7 @@ export interface Course {
   duration: string;
   level: string;
   tags: string[];
+  wage: string;
 }
 
 export interface Testimonial {
